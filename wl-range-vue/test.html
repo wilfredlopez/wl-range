@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>wl-range + Vue.js</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vue-class-component@latest/dist/vue-class-component.js"></script>
-    <script src="https://unpkg.com/vue-property-decorator@latest/lib/vue-property-decorator.umd.js"></script>
-    <script src="https://unpkg.com/wl-range-vue@latest/dist/wl-range-vue.js"></script>
-    <script type="module" src="https://unpkg.com/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
 
-    <script nomodule src="https://unpkg.com/wl-range@latest/dist/wl-range.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>wl-range + Vue.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <script src="https://unpkg.com/vue@next"></script>
+  <!-- <script src="https://unpkg.com/vue-class-component@latest/dist/vue-class-component.js"></script>
+    <script src="https://unpkg.com/vue-property-decorator@latest/lib/vue-property-decorator.umd.js"></script> -->
+  <script src="https://unpkg.com/wl-range-vue@latest/dist/wl-range-vue.js"></script>
+  <script type="module" src="https://unpkg.com/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
 
-  <body>
-    <div id="app"></div>
+  <script nomodule src="https://unpkg.com/wl-range@latest/dist/wl-range.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
+</head>
 
-    <script>
-      const Home = {
-        template: `<div> 
-                <wl-range>
-                    <div v-slot:start>0</div>
-                    <div v-slot:end>1</div>
-                    </wl-range>
-                </div>`,
-      };
+<body>
+  <div id="app"></div>
 
-      Vue.config.ignoredElements.push(/^wl-/);
+  <script>
+    const app = Vue.createApp({
+      template: `
+        <div>
+      <wl-range value="20">
+        <div slot="start">
+          0
+        </div>
+        <div slot="end">
+          100
+        </div>
+      </wl-range>
+    </div>
+    `,
+    });
 
-      new Vue({
-        template: `<div> 
-                <wl-range></wl-range>
-                </div>`,
-      }).$mount("#app");
-    </script>
-  </body>
+
+    app.config.isCustomElement = tag => tag.startsWith('wl-');
+    app.mount("#app");
+
+  </script>
+</body>
+
 </html>
