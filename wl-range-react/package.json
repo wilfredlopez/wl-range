@@ -1,6 +1,6 @@
 {
   "name": "wl-range-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React specific wrapper for wl-range",
   "keywords": [
     "pwa",
@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "tslib": "*",
-    "wl-range": "^0.0.3"
+    "wl-range": "^1.0.0"
   },
   "prettier": {
     "singleQuote": true,
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "wl-range": "^0.0.3"
+    "wl-range": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^24.9.0",
