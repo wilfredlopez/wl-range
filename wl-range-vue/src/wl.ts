@@ -7,7 +7,14 @@ import { createInputComponent } from './components/inputs';
 
 let Vue: App;
 
-function installFunction(config: WlConfig) {
+function installFunction(_Vue: App<any>, config: WlConfig) {
+  if (Vue && _Vue === Vue) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('[Wl] already installed. Vue.use(Wl) should be called only once.');
+    }
+    return;
+  }
+  Vue = _Vue;
   Vue.config.isCustomElement = tag => tag.startsWith('wl-');
 
   createInputComponent('WlRangeVue', 'wl-range');
@@ -16,22 +23,11 @@ function installFunction(config: WlConfig) {
 }
 
 export const install: Plugin = (_Vue, config: WlConfig) => {
-  if (Vue && _Vue === Vue) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('[Wl] already installed. Vue.use(Wl) should be called only once.');
-    }
-    return;
-  }
-  Vue = _Vue;
-  installFunction(config);
+  installFunction(_Vue, config);
 
   return {
     install: () => {
-      Vue.config.isCustomElement = tag => tag.search(/^wl-/) !== -1;
-      Vue.config.isCustomElement = tag => tag.startsWith('wl');
-      createInputComponent('WlRangeVue', 'wl-range');
-
-      appInitialize(config);
+      installFunction(_Vue, config);
     },
   };
 };

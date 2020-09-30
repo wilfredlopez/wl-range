@@ -1,13 +1,14 @@
 import path from "path";
 import vue from "rollup-plugin-vue";
-import { terser } from "rollup-plugin-terser";
+import {
+  terser
+} from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
 
 const resolve = _path => path.resolve(__dirname, "./", _path);
 
 function outputConfig(suffix, format, opts = {}) {
-  return Object.assign(
-    {
+  return Object.assign({
       file: resolve(`./dist/wl-range-vue${suffix}.js`),
       name: "WlRangeVue",
       exports: "named",
