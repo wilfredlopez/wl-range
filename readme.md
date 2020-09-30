@@ -40,6 +40,15 @@ https://github.com/wilfredlopez/wl-range/tree/master/src/components/wl-range
       <div slot="start">0</div>
       <div slot="end">100</div>
     </wl-range>
+    <script>
+      const range = document.querySelector('wl-range');
+
+      if (range) {
+        range.addEventListener('wlChange', e => {
+          console.log('it changes', e.detail.value);
+        });
+      }
+    </script>
   </body>
 </html>
 ```

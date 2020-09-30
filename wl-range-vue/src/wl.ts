@@ -7,6 +7,14 @@ import { createInputComponent } from './components/inputs';
 
 let Vue: App;
 
+function installFunction(config: WlConfig) {
+  Vue.config.isCustomElement = tag => tag.startsWith('wl-');
+
+  createInputComponent('WlRangeVue', 'wl-range');
+
+  appInitialize(config);
+}
+
 export const install: Plugin = (_Vue, config: WlConfig) => {
   if (Vue && _Vue === Vue) {
     if (process.env.NODE_ENV !== 'production') {
@@ -15,9 +23,15 @@ export const install: Plugin = (_Vue, config: WlConfig) => {
     return;
   }
   Vue = _Vue;
-  Vue.config.isCustomElement = tag => tag.startsWith('wl-');
+  installFunction(config);
 
-  createInputComponent('WlRangeVue', 'wl-range');
+  return {
+    install: () => {
+      Vue.config.isCustomElement = tag => tag.search(/^wl-/) !== -1;
+      Vue.config.isCustomElement = tag => tag.startsWith('wl');
+      createInputComponent('WlRangeVue', 'wl-range');
 
-  appInitialize(config);
+      appInitialize(config);
+    },
+  };
 };
