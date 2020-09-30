@@ -13,12 +13,12 @@ const app = createApp({
   template: `
         <div>
       <wl-range value="20">
-        <template v-slot:start>
+        <div slot="start">
           0
-        </template>
-        <template v-slot:end>
+        </div>
+        <div slot="end">
           100
-        </template>
+        </div>
       </wl-range>
     </div>
     `,
