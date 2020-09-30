@@ -1,50 +1,57 @@
-import { Config } from "@stencil/core";
-import { sass } from "@stencil/sass";
+import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 
-import { OutputTargetWww } from "@stencil/core/internal";
+import { OutputTargetWww } from '@stencil/core/internal';
 
 const devTarget = {
-  type: "www",
+  type: 'www',
   copy: [
     {
-      src: "../css",
-      dest: "./css",
+      src: '../css',
+      dest: './css',
     },
   ],
 } as OutputTargetWww;
 
 export const config: Config = {
-  namespace: "wl-range",
-  taskQueue: "async",
-  // enableCache: true,
+  namespace: 'wl-range',
+  taskQueue: 'async',
+  enableCache: true,
+  bundles: [{ components: ['wl-range'] }],
   outputTargets: [
     {
-      type: "dist",
+      type: 'dist',
       copy: [
         {
-          src: "../css",
-          dest: "./css",
+          src: '../css',
+          dest: './css',
         },
       ],
-      esmLoaderPath: "../loader",
+      esmLoaderPath: '../loader',
     },
     {
-      type: "dist-custom-elements-bundle",
+      // type: 'dist-custom-elements-bundle',
+      type: 'dist-hydrate-script',
     },
     {
-      type: "docs-readme",
+      type: 'docs-readme',
     },
     {
-      type: "www",
-      serviceWorker: null, // disable service workers
+      type: 'www',
+      copy: [
+        {
+          src: '../css',
+          dest: './css',
+        },
+      ],
     },
   ],
   plugins: [
     sass({
-      injectGlobalPaths: ["src/themes/wl.skip-warns.scss"],
+      injectGlobalPaths: ['src/themes/wl.skip-warns.scss'],
     }),
   ],
-  globalScript: "src/global/wl-global.ts",
+  globalScript: 'src/global/wl-global.ts',
   extras: {
     cssVarsShim: true,
     dynamicImportShim: true,
@@ -55,10 +62,10 @@ export const config: Config = {
   },
 };
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   config.outputTargets.push(devTarget);
   config.devMode = true;
   config.devServer = {
-    reloadStrategy: "hmr",
+    reloadStrategy: 'hmr',
   };
 }

@@ -1,6 +1,9 @@
 @import "./range";
 @import "./range.md.vars";
 
+
+
+
 // Material Design Range
 // --------------------------------------------------
 
@@ -23,7 +26,7 @@
 }
 
 :host(.wl-color) .range-bar {
-  background: currentColor(base);
+  background: current-color(base, 0.5);
 }
 
 :host(.wl-color) .range-bar-active,
@@ -31,8 +34,8 @@
 :host(.wl-color) .range-pin,
 :host(.wl-color) .range-pin::before,
 :host(.wl-color) .range-tick {
-  background: currentColor(base);
-  color: currentColor(contrast);
+  background: current-color(base);
+  color: current-color(contrast);
 }
 
 ::slotted([slot="start"]) {
