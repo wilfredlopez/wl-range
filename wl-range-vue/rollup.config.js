@@ -38,6 +38,7 @@ function baseConfig() {
         useTsconfigDeclarationDir: true,
         objectHashIgnoreUnknownHack: true,
         clean: true,
+
       }),
     ],
   };
