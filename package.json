@@ -1,7 +1,7 @@
 {
   "name": "wl-range",
   "version": "0.0.2",
-  "description": "Stencil Component Starter",
+  "description": "Simple Range Component",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -47,5 +47,10 @@
     "type": "git",
     "url": "git+https://github.com/wilfredlopez/wl-range.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "input",
+    "range",
+    "HTMLElement"
+  ]
 }
