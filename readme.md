@@ -9,18 +9,16 @@ npm install wl-range
 #### Or Script tag
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
 
-<script type="module" src="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
+<script type="module" src="https://unpkg.com/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
 
-<script nomodule src="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range.js"></script>
+<script nomodule src="https://unpkg.com/wl-range@latest/dist/wl-range.js"></script>
 ```
 
 #### API Documentation
 
-https://github.com/wilfredlopez/-wilfredlopez-wl-range/tree/master/src/components/wl-range
-
-Example: https://github.com/wilfredlopez/-wilfredlopez-wl-range/tree/master/src/components/wl-star
+https://github.com/wilfredlopez/wl-range/tree/master/src/components/wl-range
 
 ### Full Example:
 
@@ -31,9 +29,11 @@ Example: https://github.com/wilfredlopez/-wilfredlopez-wl-range/tree/master/src/
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Example - wl-range</title>
-    <link rel="stylesheet" href="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
-    <script type="module" src="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
-    <script nomodule src="https://unpkg.com/@wilfredlopez/wl-range@latest/dist/wl-range.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/wl-range@latest/dist/wl-range/css/wl.bundle.css" />
+
+    <script type="module" src="https://unpkg.com/wl-range@latest/dist/wl-range/wl-range.esm.js"></script>
+
+    <script nomodule src="https://unpkg.com/wl-range@latest/dist/wl-range.js"></script>
   </head>
   <body>
     <wl-range value="20" min="0" max="100" pin>
@@ -48,132 +48,67 @@ Example: https://github.com/wilfredlopez/-wilfredlopez-wl-range/tree/master/src/
 
 ```css
 :root {
-  --wl-color-primary: #428cff;
-  --wl-color-primary-rgb: 66, 140, 255;
+  --wl-color-primary: #3880ff;
+  --wl-color-primary-rgb: 56, 128, 255;
   --wl-color-primary-contrast: #ffffff;
   --wl-color-primary-contrast-rgb: 255, 255, 255;
-  --wl-color-primary-shade: #3a7be0;
-  --wl-color-primary-tint: #5598ff;
+  --wl-color-primary-shade: #3171e0;
+  --wl-color-primary-tint: #4c8dff;
 
-  --wl-color-secondary: #50c8ff;
-  --wl-color-secondary-rgb: 80, 200, 255;
+  --wl-color-secondary: #3dc2ff;
+  --wl-color-secondary-rgb: 61, 194, 255;
   --wl-color-secondary-contrast: #ffffff;
   --wl-color-secondary-contrast-rgb: 255, 255, 255;
-  --wl-color-secondary-shade: #46b0e0;
-  --wl-color-secondary-tint: #62ceff;
+  --wl-color-secondary-shade: #36abe0;
+  --wl-color-secondary-tint: #50c8ff;
 
-  --wl-color-tertiary: #176497;
-  --wl-color-tertiary-rgb: 106, 100, 255;
+  --wl-color-tertiary: #5260ff;
+  --wl-color-tertiary-rgb: 82, 96, 255;
   --wl-color-tertiary-contrast: #ffffff;
   --wl-color-tertiary-contrast-rgb: 255, 255, 255;
-  --wl-color-tertiary-shade: #0c598b;
-  --wl-color-tertiary-tint: #2571a3;
+  --wl-color-tertiary-shade: #4854e0;
+  --wl-color-tertiary-tint: #6370ff;
 
-  --wl-color-success: #2fdf75;
-  --wl-color-success-rgb: 47, 223, 117;
-  --wl-color-success-contrast: #000000;
-  --wl-color-success-contrast-rgb: 0, 0, 0;
-  --wl-color-success-shade: #29c467;
-  --wl-color-success-tint: #44e283;
+  --wl-color-success: #2dd36f;
+  --wl-color-success-rgb: 45, 211, 111;
+  --wl-color-success-contrast: #ffffff;
+  --wl-color-success-contrast-rgb: 255, 255, 255;
+  --wl-color-success-shade: #28ba62;
+  --wl-color-success-tint: #42d77d;
 
-  --wl-color-warning: #ffd534;
-  --wl-color-warning-rgb: 255, 213, 52;
+  --wl-color-warning: #ffc409;
+  --wl-color-warning-rgb: 255, 196, 9;
   --wl-color-warning-contrast: #000000;
   --wl-color-warning-contrast-rgb: 0, 0, 0;
-  --wl-color-warning-shade: #e0bb2e;
-  --wl-color-warning-tint: #ffd948;
+  --wl-color-warning-shade: #e0ac08;
+  --wl-color-warning-tint: #ffca22;
 
-  --wl-color-danger: #ff4961;
-  --wl-color-danger-rgb: 255, 73, 97;
+  --wl-color-danger: #eb445a;
+  --wl-color-danger-rgb: 235, 68, 90;
   --wl-color-danger-contrast: #ffffff;
   --wl-color-danger-contrast-rgb: 255, 255, 255;
-  --wl-color-danger-shade: #e04055;
-  --wl-color-danger-tint: #ff5b71;
+  --wl-color-danger-shade: #cf3c4f;
+  --wl-color-danger-tint: #ed576b;
 
-  --wl-color-dark: #000000;
-  --wl-color-dark-rgb: 244, 245, 248;
-  --wl-color-dark-contrast: #e4e4e4;
-  --wl-color-dark-contrast-rgb: 0, 0, 0;
-  --wl-color-dark-shade: #d7d8da;
-  --wl-color-dark-tint: #f5f6f9;
+  --wl-color-dark: #222428;
+  --wl-color-dark-rgb: 34, 36, 40;
+  --wl-color-dark-contrast: #ffffff;
+  --wl-color-dark-contrast-rgb: 255, 255, 255;
+  --wl-color-dark-shade: #1e2023;
+  --wl-color-dark-tint: #383a3e;
 
-  --wl-color-medium: #989aa2;
-  --wl-color-medium-rgb: 152, 154, 162;
-  --wl-color-medium-contrast: #000000;
-  --wl-color-medium-contrast-rgb: 0, 0, 0;
-  --wl-color-medium-shade: #86888f;
-  --wl-color-medium-tint: #a2a4ab;
+  --wl-color-medium: #92949c;
+  --wl-color-medium-rgb: 146, 148, 156;
+  --wl-color-medium-contrast: #ffffff;
+  --wl-color-medium-contrast-rgb: 255, 255, 255;
+  --wl-color-medium-shade: #808289;
+  --wl-color-medium-tint: #9d9fa6;
 
-  --wl-color-light: #ffffff;
-  --wl-color-light-rgb: 34, 36, 40;
-  --wl-color-light-contrast: #030303;
-  --wl-color-light-contrast-rgb: 255, 255, 255;
-  --wl-color-light-shade: #1e2023;
-  --wl-color-light-tint: #383a3e;
-}
-
-.ios {
-  --wl-background-color: #000000;
-  --wl-background-color-rgb: 0, 0, 0;
-
-  --wl-text-color: #000000;
-  --wl-text-color-rgb: 255, 255, 255;
-
-  --wl-color-step-50: #0d0d0d;
-  --wl-color-step-100: #1a1a1a;
-  --wl-color-step-150: #262626;
-  --wl-color-step-200: #333333;
-  --wl-color-step-250: #404040;
-  --wl-color-step-300: #4d4d4d;
-  --wl-color-step-350: #595959;
-  --wl-color-step-400: #666666;
-  --wl-color-step-450: #737373;
-  --wl-color-step-500: #808080;
-  --wl-color-step-550: #8c8c8c;
-  --wl-color-step-600: #999999;
-  --wl-color-step-650: #a6a6a6;
-  --wl-color-step-700: #b3b3b3;
-  --wl-color-step-750: #bfbfbf;
-  --wl-color-step-800: #cccccc;
-  --wl-color-step-850: #d9d9d9;
-  --wl-color-step-900: #e6e6e6;
-  --wl-color-step-950: #f2f2f2;
-
-  --wl-item-background: #f1f1f1;
-
-  --wl-toolbar-background: #000;
-  --wl-toolbar-color: #fff;
-}
-
-.md {
-  --wl-background-color: #121212;
-  --wl-background-color-rgb: 18, 18, 18;
-
-  --wl-text-color: #000000;
-  --wl-text-color-rgb: 255, 255, 255;
-
-  --wl-border-color: #222222;
-
-  --wl-color-step-50: #1e1e1e;
-  --wl-color-step-100: #2a2a2a;
-  --wl-color-step-150: #363636;
-  --wl-color-step-200: #414141;
-  --wl-color-step-250: #4d4d4d;
-  --wl-color-step-300: #595959;
-  --wl-color-step-350: #656565;
-  --wl-color-step-400: #717171;
-  --wl-color-step-450: #7d7d7d;
-  --wl-color-step-500: #898989;
-  --wl-color-step-550: #949494;
-  --wl-color-step-600: #a0a0a0;
-  --wl-color-step-650: #acacac;
-  --wl-color-step-700: #b8b8b8;
-  --wl-color-step-750: #c4c4c4;
-  --wl-color-step-800: #d0d0d0;
-  --wl-color-step-850: #dbdbdb;
-  --wl-color-step-900: #e7e7e7;
-  --wl-color-step-950: #f3f3f3;
-
-  --wl-item-background: #ffffff;
+  --wl-color-light: #f4f5f8;
+  --wl-color-light-rgb: 244, 245, 248;
+  --wl-color-light-contrast: #000000;
+  --wl-color-light-contrast-rgb: 0, 0, 0;
+  --wl-color-light-shade: #d7d8da;
+  --wl-color-light-tint: #f5f6f9;
 }
 ```
