@@ -1,6 +1,6 @@
 {
   "name": "wl-range-vue",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Vue specific wrappers for wl-range",
   "main": "dist/wl-range-vue.common.js",
   "types": "dist/types/index.d.ts",
@@ -21,25 +21,23 @@
   },
   "author": "",
   "dependencies": {
-    "vue": "^2.6.12",
     "wl-range": "0.0.2"
   },
   "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0",
     "cross-env": "^7.0.2",
     "rollup": "^2.18.1",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
-    "rollup-plugin-vue": "^4.3.0",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
     "tslib": "1.9.3",
     "tslint": "5.11.0",
     "tslint-ionic-rules": "0.0.19",
     "typescript": "3.9.5",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue": "^3.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.5.17"
+    "vue": "^3.0.0"
   },
   "license": "MIT"
 }

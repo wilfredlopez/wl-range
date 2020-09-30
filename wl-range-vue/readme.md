@@ -2,19 +2,29 @@
 
 Wl Vue.js specific building blocks on top of [wl-range](https://www.npmjs.com/package/wl-range) components.
 
-To get started simply install `wl-range/vue` and `wl-range` with npm into your project and then register `wl/vue` as a plugin to your vue application.
+To get started simply install `wl-range-vue` and `wl-range` with npm into your project and then register `wl/vue` as a plugin to your vue application.
 
 ```ts
-import Vue from "vue";
-import Wl from "wl-range/vue";
+import { createApp } from 'vue';
 
-Vue.use(Wl);
+import Wl from './index';
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount("#app");
+const app = createApp({
+  template: `
+        <div>
+      <wl-range value="20">
+        <template v-slot:start>
+          0
+        </template>
+        <template v-slot:end>
+          100
+        </template>
+      </wl-range>
+    </div>
+    `,
+});
+
+app.use(Wl);
 ```
 
 ## Current known limitations

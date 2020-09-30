@@ -1,11 +1,11 @@
-import Vue from "vue";
+import { App } from 'vue';
 
 export interface HTMLVueElement extends HTMLElement {
-  __vue__: Vue;
+  __vue__: App;
 }
 
 export interface VueWindow extends Window {
-  Vue: typeof Vue;
+  Vue: App;
 }
 
 export interface WebpackFunction extends Function {
@@ -29,7 +29,7 @@ export interface WlWindow extends Window {
 }
 
 export interface FrameworkDelegate {
-  attachViewToDom(parentElement: HTMLElement, component: HTMLElement | WebpackFunction | object | Vue, opts?: object, classes?: string[]): Promise<HTMLElement>;
+  attachViewToDom(parentElement: HTMLElement, component: HTMLElement | WebpackFunction | object | App, opts?: object, classes?: string[]): Promise<HTMLElement>;
   removeViewFromDom(parentElement: HTMLElement, childElement: HTMLVueElement): Promise<void>;
 }
 

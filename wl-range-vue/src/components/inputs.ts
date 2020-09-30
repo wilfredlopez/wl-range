@@ -1,13 +1,14 @@
-import Vue from "vue";
+import { defineComponent } from 'vue';
 
 /**
- * Create a wrapped input component that captures typical ionic input events
+ * Create a wrapped input component that captures typical wl input events
  * and emits core ones so v-model works.
- * @param {} name the vue name of the component
- * @param {*} coreTag the actual tag to render (such as ion-datetime)
+ *  name: the vue name of the component
+ *  coreTag: the actual tag to render (such as wl-range)
  */
-export function createInputComponent(name: string, coreTag: string, modelEvent = "ionChange", valueProperty = "value") {
-  return Vue.component(name, {
+export function createInputComponent(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value') {
+  return defineComponent({
+    name,
     model: {
       event: modelEvent,
       prop: valueProperty,
@@ -22,10 +23,10 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
         {
           attrs: cmp.attrs,
           on: {
-            ionChange: cmp.handleChange,
-            ionInput: cmp.handleInput,
-            ionBlur: cmp.handleBlur,
-            ionFocus: cmp.handleFocus,
+            wlChange: cmp.handleChange,
+            wlInput: cmp.handleInput,
+            wlBlur: cmp.handleBlur,
+            wlFocus: cmp.handleFocus,
           },
         },
         this.$slots.default,
@@ -33,28 +34,28 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
     },
     methods: {
       handleChange($event: any) {
-        if (modelEvent === "ionChange") {
+        if (modelEvent === 'wlChange') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit("ionChange", $event.target[valueProperty]);
+          this.$emit('wlChange', $event.target[valueProperty]);
         } else {
-          this.$emit("ionChange", $event);
+          this.$emit('wlChange', $event);
         }
       },
       handleInput($event: any) {
-        if (modelEvent === "ionInput") {
+        if (modelEvent === 'wlInput') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit("ionInput", $event.target[valueProperty]);
+          this.$emit('wlInput', $event.target[valueProperty]);
         } else {
-          this.$emit("ionInput", $event);
+          this.$emit('wlInput', $event);
         }
       },
       handleBlur($event: any) {
-        this.$emit("ionBlur", $event);
+        this.$emit('wlBlur', $event);
       },
       handleFocus($event: any) {
-        this.$emit("ionFocus", $event);
+        this.$emit('wlFocus', $event);
       },
     },
   });

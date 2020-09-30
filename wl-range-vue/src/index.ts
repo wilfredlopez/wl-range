@@ -1,8 +1,5 @@
-import { install } from "./wl";
+import { install } from './wl';
 
-export default {
-  install,
-  version: "__VERSION__",
-};
+export default install;
 
-export * from "./components/inputs";
+export * from './components/inputs';
