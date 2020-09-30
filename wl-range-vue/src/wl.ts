@@ -1,6 +1,6 @@
 import { PluginFunction, default as VueImport } from "vue";
 
-import { WlConfig } from "../src/global/wl-config";
+import { WlConfig } from "wl-range";
 import { appInitialize } from "./app-initialize";
 
 import { createInputComponent } from "./components/inputs";

@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-import-side-effect
-import { WlConfig } from "../src/global/wl-config";
+import { WlConfig } from "wl-range";
 
-import { applyPolyfills, defineCustomElements } from "../loader";
+import { applyPolyfills, defineCustomElements } from "wl-range/loader";
 import { WlWindow } from "./interfaces";
 
 export function appInitialize(config?: WlConfig) {
