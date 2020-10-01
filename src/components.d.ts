@@ -11,7 +11,7 @@ export namespace Components {
     interface WlRange {
         "color"?: PredefinedColors;
         /**
-          * How long, in milliseconds, to wait to trigger the `wlChange` event after each change in the range value.
+          * How long, in milliseconds, to wait to trigger the `change` event after each change in the range value.
          */
         "debounce": number;
         /**
@@ -75,7 +75,7 @@ declare namespace LocalJSX {
     interface WlRange {
         "color"?: PredefinedColors;
         /**
-          * How long, in milliseconds, to wait to trigger the `wlChange` event after each change in the range value.
+          * How long, in milliseconds, to wait to trigger the `change` event after each change in the range value.
          */
         "debounce"?: number;
         /**
@@ -105,15 +105,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the range loses focus.
          */
-        "onWlBlur"?: (event: CustomEvent<void>) => void;
+        "onBlur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the value property has changed.
          */
-        "onWlChange"?: (event: CustomEvent<RangeChangeEventDetail>) => void;
+        "onChange"?: (event: CustomEvent<RangeChangeEventDetail>) => void;
         /**
           * Emitted when the range has focus.
          */
-        "onWlFocus"?: (event: CustomEvent<void>) => void;
+        "onFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the styles change.
          */

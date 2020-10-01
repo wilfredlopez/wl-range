@@ -26,6 +26,7 @@ function baseConfig() {
       outputConfig("", "umd", {
         globals: {
           vue: "Vue",
+          'wl-range/loader': 'wl-range/loader'
         },
       }),
       outputConfig(".esm", "esm"),
@@ -36,7 +37,7 @@ function baseConfig() {
       vue(),
       typescript({
         useTsconfigDeclarationDir: true,
-        objectHashIgnoreUnknownHack: true,
+        // objectHashIgnoreUnknownHack: true,
         clean: true,
 
       }),
