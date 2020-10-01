@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Stencil Component Starter</title>
-
-  <style>
-    /**
+    <style>
+      /**
  * Default
  * -----------------------------------------------------
  * The default theme uses a white background with
 
 **/
 
-    /* :root {
+      /* :root {
         --wl-color-primary: #3880ff;
         --wl-color-primary-rgb: 56, 128, 255;
         --wl-color-primary-contrast: #ffffff;
@@ -78,30 +77,27 @@
         --wl-color-light-shade: #d7d8da;
         --wl-color-light-tint: #f5f6f9;
       } */
+    </style>
+    <link rel="stylesheet" href="/css/wl.bundle.css" />
+    <script type="module" src="/build/wl-range.esm.js"></script>
+    <script nomodule src="/build/wl-range.js"></script>
+  </head>
 
-  </style>
-  <link rel="stylesheet" href="/css/wl.bundle.css" />
-  <script type="module" src="/build/wl-range.esm.js"></script>
-  <script nomodule src="/build/wl-range.js"></script>
-</head>
+  <body>
+    <h1>Hello</h1>
+    <wl-range value="20" min="0" max="100" pin color="danger">
+      <div slot="start">0</div>
+      <div slot="end">100</div>
+    </wl-range>
 
-<body>
-  <h1>Hello</h1>
-  <wl-range value="20" min="0" max="100" pin color="danger">
-    <div slot="start">0</div>
-    <div slot="end">100</div>
-  </wl-range>
+    <script>
+      const range = document.querySelector('wl-range');
 
-  <script>
-    const range = document.querySelector('wl-range')
-
-    if (range) {
-      range.addEventListener('change', (e) => {
-        console.log('it changes', e.detail.value)
-      })
-    }
-
-  </script>
-</body>
-
+      if (range) {
+        range.addEventListener('wl-change', e => {
+          console.log('it changes', e.detail.value);
+        });
+      }
+    </script>
+  </body>
 </html>

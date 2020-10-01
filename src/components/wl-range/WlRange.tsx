@@ -46,13 +46,13 @@ export class MyComponent implements ComponentInterface {
 
   /**
    * How long, in milliseconds, to wait to trigger the
-   * `change` event after each change in the range value.
+   * `wlChange` event after each change in the range value.
    */
   @Prop() debounce = 0;
 
   @Watch('debounce')
   protected debounceChanged() {
-    this.change = debounceEvent(this.change, this.debounce);
+    this.wlChange = debounceEvent(this.wlChange, this.debounce);
   }
 
   /**
@@ -134,7 +134,7 @@ export class MyComponent implements ComponentInterface {
 
     value = this.ensureValueInBounds(value);
 
-    this.change.emit({ value });
+    this.wlChange.emit({ value });
   }
 
   private clampBounds = (value: any): number => {
@@ -155,7 +155,7 @@ export class MyComponent implements ComponentInterface {
   /**
    * Emitted when the value property has changed.
    */
-  @Event() change!: EventEmitter<RangeChangeEventDetail>;
+  @Event() wlChange!: EventEmitter<RangeChangeEventDetail>;
 
   /**
    * Emitted when the styles change.
@@ -166,12 +166,12 @@ export class MyComponent implements ComponentInterface {
   /**
    * Emitted when the range has focus.
    */
-  @Event() focus!: EventEmitter<void>;
+  @Event() wlFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the range loses focus.
    */
-  @Event() blur!: EventEmitter<void>;
+  @Event() wlBlur!: EventEmitter<void>;
 
   connectedCallback() {
     this.updateRatio();
@@ -353,7 +353,7 @@ export class MyComponent implements ComponentInterface {
   private onBlur = () => {
     if (this.hasFocus) {
       this.hasFocus = false;
-      this.blur.emit();
+      this.wlBlur.emit();
       this.emitStyle();
     }
   };
@@ -361,7 +361,7 @@ export class MyComponent implements ComponentInterface {
   private onFocus = () => {
     if (!this.hasFocus) {
       this.hasFocus = true;
-      this.focus.emit();
+      this.wlFocus.emit();
       this.emitStyle();
     }
   };

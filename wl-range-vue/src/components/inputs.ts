@@ -6,14 +6,14 @@ import * as vue from 'vue';
  *  name: the vue name of the component
  *  coreTag: the actual tag to render (such as wl-range)
  */
-export function createInputComponent(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value') {
+export function createInputComponent(name: string, coreTag: string, modelEvent = 'change', valueProperty = 'value') {
   return vue.defineComponent({
     name,
     model: {
       event: modelEvent,
       prop: valueProperty,
     },
-    emits: ['wlChange', 'wlInput', 'wlBlur', 'wlFocus'],
+    emits: ['change', 'wlInput', 'blur', 'focus'],
     render() {
       // Vue types have a bug accessing member properties:
       // https://github.com/vuejs/vue/issues/8721
@@ -38,10 +38,10 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
         {
           attrs: cmp.$attrs,
           on: {
-            wlChange: cmp.handleChange,
+            change: cmp.handleChange,
             wlInput: cmp.handleInput,
-            wlBlur: cmp.handleBlur,
-            wlFocus: cmp.handleFocus,
+            blur: cmp.handleBlur,
+            focus: cmp.handleFocus,
           },
         },
         slots,
@@ -49,12 +49,12 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
     },
     methods: {
       handleChange($event: any) {
-        if (modelEvent === 'wlChange') {
+        if (modelEvent === 'change') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit('wlChange', $event.target[valueProperty]);
+          this.$emit('change', $event.target[valueProperty]);
         } else {
-          this.$emit('wlChange', $event);
+          this.$emit('change', $event);
         }
       },
       handleInput($event: any) {
@@ -67,10 +67,10 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
         }
       },
       handleBlur($event: any) {
-        this.$emit('wlBlur', $event);
+        this.$emit('blur', $event);
       },
       handleFocus($event: any) {
-        this.$emit('wlFocus', $event);
+        this.$emit('focus', $event);
       },
     },
   });
@@ -82,7 +82,7 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
  *  name: the vue name of the component
  *  coreTag: the actual tag to render (such as wl-range)
  */
-export function createInputComponentOld(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value') {
+export function createInputComponentOld(name: string, coreTag: string, modelEvent = 'change', valueProperty = 'value') {
   return vue.defineComponent({
     name,
     model: {
@@ -90,7 +90,7 @@ export function createInputComponentOld(name: string, coreTag: string, modelEven
       prop: valueProperty,
     },
     inheritAttrs: true,
-    emits: ['wlChange', 'wlInput', 'wlBlur', 'wlFocus'],
+    emits: ['change', 'wlInput', 'blur', 'focus'],
     render(createElement: any) {
       // Vue types have a bug accessing member properties:
       // https://github.com/vuejs/vue/issues/8721
@@ -103,10 +103,10 @@ export function createInputComponentOld(name: string, coreTag: string, modelEven
           // attrs: cmp.attrs,
           attrs: { ...this.$attrs, ...cmp.attrs },
           on: {
-            wlChange: this.handleChange.bind(cmp),
+            change: this.handleChange.bind(cmp),
             wlInput: this.handleInput.bind(cmp),
-            wlBlur: this.handleBlur.bind(cmp),
-            wlFocus: this.handleFocus.bind(cmp),
+            blur: this.handleBlur.bind(cmp),
+            focus: this.handleFocus.bind(cmp),
           },
         },
         [this.$slots.default, this.$slots.start, this.$slots.end],
@@ -114,12 +114,12 @@ export function createInputComponentOld(name: string, coreTag: string, modelEven
     },
     methods: {
       handleChange($event: any) {
-        if (modelEvent === 'wlChange') {
+        if (modelEvent === 'change') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit('wlChange', $event.target[valueProperty]);
+          this.$emit('change', $event.target[valueProperty]);
         } else {
-          this.$emit('wlChange', $event);
+          this.$emit('change', $event);
         }
       },
       handleInput($event: any) {
@@ -132,10 +132,10 @@ export function createInputComponentOld(name: string, coreTag: string, modelEven
         }
       },
       handleBlur($event: any) {
-        this.$emit('wlBlur', $event);
+        this.$emit('blur', $event);
       },
       handleFocus($event: any) {
-        this.$emit('wlFocus', $event);
+        this.$emit('focus', $event);
       },
     },
   });

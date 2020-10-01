@@ -7,30 +7,30 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                              | Type                                                                                                            | Default     |
-| ----------- | ------------ | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------- |
-| `color`     | `color`      |                                                                                                          | `"danger" \| "dark" \| "light" \| "medium" \| "primary" \| "secondary" \| "success" \| "tertiary" \| "warning"` | `undefined` |
-| `debounce`  | `debounce`   | How long, in milliseconds, to wait to trigger the `wlChange` event after each change in the range value. | `number`                                                                                                        | `0`         |
-| `disabled`  | `disabled`   | If `true`, the user cannot interact with the range.                                                      | `boolean`                                                                                                       | `false`     |
-| `dualKnobs` | `dual-knobs` | Show two knobs.                                                                                          | `boolean`                                                                                                       | `false`     |
-| `max`       | `max`        | Maximum integer value of the range.                                                                      | `number`                                                                                                        | `100`       |
-| `min`       | `min`        | Minimum integer value of the range.                                                                      | `number`                                                                                                        | `0`         |
-| `mode`      | `mode`       | The mode determines which platform styles to use.                                                        | `"ios" \| "md"`                                                                                                 | `undefined` |
-| `name`      | `name`       | The name of the control, which is submitted with the form data.                                          | `string`                                                                                                        | `''`        |
-| `pin`       | `pin`        | If `true`, a pin with integer value is shown when the knob is pressed.                                   | `boolean`                                                                                                       | `false`     |
-| `snaps`     | `snaps`      | If `true`, the knob snaps to tick marks evenly spaced based on the step property value.                  | `boolean`                                                                                                       | `false`     |
-| `step`      | `step`       | Specifies the value granularity.                                                                         | `number`                                                                                                        | `1`         |
-| `ticks`     | `ticks`      | If `true`, tick marks are displayed based on the step value. Only applies when `snaps` is `true`.        | `boolean`                                                                                                       | `true`      |
-| `value`     | `value`      | the value of the range.                                                                                  | `number \| { lower: number; upper: number; }`                                                                   | `0`         |
+| Property    | Attribute    | Description                                                                                            | Type                                                                                                            | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`     | `color`      |                                                                                                        | `"danger" \| "dark" \| "light" \| "medium" \| "primary" \| "secondary" \| "success" \| "tertiary" \| "warning"` | `undefined` |
+| `debounce`  | `debounce`   | How long, in milliseconds, to wait to trigger the `change` event after each change in the range value. | `number`                                                                                                        | `0`         |
+| `disabled`  | `disabled`   | If `true`, the user cannot interact with the range.                                                    | `boolean`                                                                                                       | `false`     |
+| `dualKnobs` | `dual-knobs` | Show two knobs.                                                                                        | `boolean`                                                                                                       | `false`     |
+| `max`       | `max`        | Maximum integer value of the range.                                                                    | `number`                                                                                                        | `100`       |
+| `min`       | `min`        | Minimum integer value of the range.                                                                    | `number`                                                                                                        | `0`         |
+| `mode`      | `mode`       | The mode determines which platform styles to use.                                                      | `"ios" \| "md"`                                                                                                 | `undefined` |
+| `name`      | `name`       | The name of the control, which is submitted with the form data.                                        | `string`                                                                                                        | `''`        |
+| `pin`       | `pin`        | If `true`, a pin with integer value is shown when the knob is pressed.                                 | `boolean`                                                                                                       | `false`     |
+| `snaps`     | `snaps`      | If `true`, the knob snaps to tick marks evenly spaced based on the step property value.                | `boolean`                                                                                                       | `false`     |
+| `step`      | `step`       | Specifies the value granularity.                                                                       | `number`                                                                                                        | `1`         |
+| `ticks`     | `ticks`      | If `true`, tick marks are displayed based on the step value. Only applies when `snaps` is `true`.      | `boolean`                                                                                                       | `true`      |
+| `value`     | `value`      | the value of the range.                                                                                | `number \| { lower: number; upper: number; }`                                                                   | `0`         |
 
 
 ## Events
 
-| Event      | Description                                  | Type                                  |
-| ---------- | -------------------------------------------- | ------------------------------------- |
-| `wlBlur`   | Emitted when the range loses focus.          | `CustomEvent<void>`                   |
-| `wlChange` | Emitted when the value property has changed. | `CustomEvent<RangeChangeEventDetail>` |
-| `wlFocus`  | Emitted when the range has focus.            | `CustomEvent<void>`                   |
+| Event    | Description                                  | Type                                  |
+| -------- | -------------------------------------------- | ------------------------------------- |
+| `blur`   | Emitted when the range loses focus.          | `CustomEvent<void>`                   |
+| `change` | Emitted when the value property has changed. | `CustomEvent<RangeChangeEventDetail>` |
+| `focus`  | Emitted when the range has focus.            | `CustomEvent<void>`                   |
 
 
 ## Slots
