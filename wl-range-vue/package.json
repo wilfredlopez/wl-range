@@ -1,6 +1,6 @@
 {
   "name": "wl-range-vue",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Vue specific wrappers for wl-range",
   "main": "dist/wl-range-vue.common.js",
   "types": "dist/types/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "author": "",
   "dependencies": {
-    "wl-range": "^2.0.0"
+    "wl-range": "^3.0.0"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0",

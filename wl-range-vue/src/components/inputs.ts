@@ -6,42 +6,44 @@ import * as vue from 'vue';
  *  name: the vue name of the component
  *  coreTag: the actual tag to render (such as wl-range)
  */
-export function createInputComponent(name: string, coreTag: string, modelEvent = 'change', valueProperty = 'value') {
+export function createInputComponent(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value', ...rest: any[]) {
   return vue.defineComponent({
     name,
     model: {
       event: modelEvent,
       prop: valueProperty,
+      ...rest,
     },
-    emits: ['change', 'wlInput', 'blur', 'focus'],
+
+    emits: ['wlChange', 'wlInput', 'wlBlur', 'wlFocus'],
     render() {
       // Vue types have a bug accessing member properties:
       // https://github.com/vuejs/vue/issues/8721
-      const cmp = this;
-      // const cmp: any = this;
+      // const cmp = this;
+      const cmp: any = this;
       const { h } = vue;
 
       const slots: vue.VNodeArrayChildren = [];
 
-      if (this.$slots.default) {
-        slots.push(this.$slots.default());
+      if (cmp.$slots.default) {
+        slots.push(cmp.$slots.default());
       }
-      if (this.$slots.start) {
-        slots.push(this.$slots.start());
+      if (cmp.$slots.start) {
+        slots.push(cmp.$slots.start());
       }
-      if (this.$slots.end) {
-        slots.push(this.$slots.end());
+      if (cmp.$slots.end) {
+        slots.push(cmp.$slots.end());
       }
 
       return h(
         coreTag as any,
         {
-          attrs: cmp.$attrs,
+          attrs: cmp.attrs,
           on: {
-            change: cmp.handleChange,
-            wlInput: cmp.handleInput,
-            blur: cmp.handleBlur,
-            focus: cmp.handleFocus,
+            wlChange: cmp.handleChange.bind(cmp),
+            wlInput: cmp.handleInput.bind(cmp),
+            wlBlur: cmp.handleBlur.bind(cmp),
+            wlFocus: cmp.handleFocus.bind(cmp),
           },
         },
         slots,
@@ -49,12 +51,12 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
     },
     methods: {
       handleChange($event: any) {
-        if (modelEvent === 'change') {
+        if (modelEvent === 'wlChange') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit('change', $event.target[valueProperty]);
+          this.$emit('wlChange', $event.target[valueProperty]);
         } else {
-          this.$emit('change', $event);
+          this.$emit('wlChange', $event);
         }
       },
       handleInput($event: any) {
@@ -67,76 +69,12 @@ export function createInputComponent(name: string, coreTag: string, modelEvent =
         }
       },
       handleBlur($event: any) {
-        this.$emit('blur', $event);
+        this.$emit('wlBlur', $event);
       },
       handleFocus($event: any) {
-        this.$emit('focus', $event);
+        this.$emit('wlFocus', $event);
       },
     },
-  });
-}
-
-/**
- * Create a wrapped input component that captures typical wl input events
- * and emits core ones so v-model works.
- *  name: the vue name of the component
- *  coreTag: the actual tag to render (such as wl-range)
- */
-export function createInputComponentOld(name: string, coreTag: string, modelEvent = 'change', valueProperty = 'value') {
-  return vue.defineComponent({
-    name,
-    model: {
-      event: modelEvent,
-      prop: valueProperty,
-    },
-    inheritAttrs: true,
-    emits: ['change', 'wlInput', 'blur', 'focus'],
-    render(createElement: any) {
-      // Vue types have a bug accessing member properties:
-      // https://github.com/vuejs/vue/issues/8721
-      // const cmp = this;
-      const cmp: any = this;
-
-      return createElement(
-        coreTag,
-        {
-          // attrs: cmp.attrs,
-          attrs: { ...this.$attrs, ...cmp.attrs },
-          on: {
-            change: this.handleChange.bind(cmp),
-            wlInput: this.handleInput.bind(cmp),
-            blur: this.handleBlur.bind(cmp),
-            focus: this.handleFocus.bind(cmp),
-          },
-        },
-        [this.$slots.default, this.$slots.start, this.$slots.end],
-      );
-    },
-    methods: {
-      handleChange($event: any) {
-        if (modelEvent === 'change') {
-          // Vue expects the value to be sent as the argument for v-model, not the
-          // actual event object
-          this.$emit('change', $event.target[valueProperty]);
-        } else {
-          this.$emit('change', $event);
-        }
-      },
-      handleInput($event: any) {
-        if (modelEvent === 'wlInput') {
-          // Vue expects the value to be sent as the argument for v-model, not the
-          // actual event object
-          this.$emit('wlInput', $event.target[valueProperty]);
-        } else {
-          this.$emit('wlInput', $event);
-        }
-      },
-      handleBlur($event: any) {
-        this.$emit('blur', $event);
-      },
-      handleFocus($event: any) {
-        this.$emit('focus', $event);
-      },
-    },
+    ...rest,
   });
 }
