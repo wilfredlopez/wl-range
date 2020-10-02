@@ -5,11 +5,16 @@ export {
   GestureDetail,
   createGesture,
   setupConfig,
+  RangeChangeEventDetail,
+  RangeValue,
 } from 'wl-range';
+
+import { RangeChangeEventDetail } from 'wl-range';
+
+export type RangeChangeEvent = CustomEvent<RangeChangeEventDetail>;
 
 // All Components
 export * from './proxies';
-export { WlPage } from './WlPage';
 // Utils
 export { isPlatform, getPlatforms, getConfig } from './utils';
 // WL Animations

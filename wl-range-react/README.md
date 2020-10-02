@@ -33,6 +33,12 @@ const App: React.FC = () => {
 };
 ```
 
+## Related
+
+- [@wilfredlopez/wl-components](https://www.npmjs.com/package/@wilfredlopez/wl-components)
+- [wl-range](https://www.npmjs.com/package/wl-range)
+- [wl-range-vue](https://www.npmjs.com/package/wl-range)
+
 ### CSS Vars you can modify.
 
 ```css

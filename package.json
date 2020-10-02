@@ -23,6 +23,7 @@
     "css.minify": "cleancss -O2 -o ./css/wl.bundle.css ./css/wl.bundle.css",
     "start:stencil": "stencil build --dev --watch --serve",
     "start": "npm run build.css && npm run start:stencil",
+    "dev": "npm run build.css && cross-env NODE_ENV=development npm run start:stencil",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
@@ -35,6 +36,7 @@
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
     "clean-css-cli": "^4.3.0",
+    "cross-env": "^7.0.2",
     "fs-extra": "^9.0.1",
     "sass": "^1.26.11",
     "workbox-build": "4.3.1"

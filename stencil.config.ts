@@ -36,15 +36,15 @@ export const config: Config = {
     {
       type: 'docs-readme',
     },
-    {
-      type: 'www',
-      copy: [
-        {
-          src: '../css',
-          dest: './css',
-        },
-      ],
-    },
+    // {
+    //   type: 'www',
+    //   copy: [
+    //     {
+    //       src: '../css',
+    //       dest: './css',
+    //     },
+    //   ],
+    // },
   ],
   plugins: [
     sass({

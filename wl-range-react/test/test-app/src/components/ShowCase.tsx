@@ -9,6 +9,7 @@ const ShowCase = (props: Props) => {
   function handleChange(val: number) {
     setValue(val);
   }
+
   return (
     <React.Fragment>
       <div className="container">
@@ -19,14 +20,9 @@ const ShowCase = (props: Props) => {
           step={1}
           min={1}
           max={10}
-          color="tertiary"
+          onWlChange={e => handleChange(e.detail.value as number)}
+          color="danger"
           pin
-          value={value}
-          onWlChange={e => {
-            if (e.detail.value) {
-              handleChange(e.detail.value as number);
-            }
-          }}
         >
           <div slot="start">
             <strong>0</strong>

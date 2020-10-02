@@ -2,17 +2,17 @@
 
 Wl Vue.js specific building blocks on top of [wl-range](https://www.npmjs.com/package/wl-range) components.
 
-To get started simply install `wl-range-vue` and `wl-range` with npm into your project and then register `wl/vue` as a plugin to your vue application.
+To get started simply install `wl-range-vue` with npm into your project and then register `wl-range-vue` as a plugin to your vue application.
 
 ```ts
-import { createApp } from 'vue';
+import { createApp, defineComponent } from 'vue';
 
-import Wl from './index';
+import Wl from 'wl-range-vue';
 
-const app = createApp({
+const Home = defineComponent({
   template: `
         <div>
-      <wl-range value="20">
+      <wl-range color="danger" @wl-change="handleSeek" :value="percentPlayed">
         <div slot="start">
           0
         </div>
@@ -22,17 +22,25 @@ const app = createApp({
       </wl-range>
     </div>
     `,
+  data() {
+    return {
+      percentPlayed: 0,
+    };
+  },
+  methods: {
+    handleSeek(value: number) {
+      if (value !== this.percentPlayed) {
+        this.percentPlayed = value;
+      }
+    },
+  },
 });
 
+const app = createApp(Home);
+
 app.use(Wl);
+app.render('#app');
 ```
-
-## Current known limitations
-
-This is an beta release of Wl/vue so please understand that there are some missing pieces but know that many of the components will work.
-
-- The shorthand `v-model` binding is currently not supported
-- Stack navigation for deep transitions is under heavy development at this time.
 
 ## Related
 
