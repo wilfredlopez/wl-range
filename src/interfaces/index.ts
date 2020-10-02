@@ -1,6 +1,7 @@
-export type Mode = "ios" | "md";
+export * from '../components/wl-range/RangeInterface';
+export type Mode = 'ios' | 'md';
 
-export type PredefinedColors = "primary" | "secondary" | "tertiary" | "success" | "warning" | "danger" | "light" | "medium" | "dark";
+export type PredefinedColors = 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'light' | 'medium' | 'dark';
 
 export interface StyleEventDetail {
   [styleName: string]: boolean;
@@ -10,7 +11,7 @@ export interface GestureConfig {
   el: Node;
   disableScroll?: boolean;
 
-  direction?: "x" | "y";
+  direction?: 'x' | 'y';
   gestureName: string;
   gesturePriority?: number;
   passive?: boolean;
@@ -47,4 +48,4 @@ export interface GestureDetail {
 
 export type GestureCallback = (detail: GestureDetail) => boolean | void;
 
-export type Side = "start" | "end";
+export type Side = 'start' | 'end';

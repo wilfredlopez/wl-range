@@ -17,8 +17,9 @@ function installFunction(_Vue: App<any>, config?: WlConfig) {
   Vue = _Vue;
   Vue.config.isCustomElement = tag => tag.startsWith('wl-');
 
-  createInputComponent('WlRangeVue', 'wl-range');
-
+  // CREATE ELEMENTS HERE
+  const WlRangeVue = createInputComponent('WlRangeVue', 'wl-range');
+  Vue.component('wl-range-vue', WlRangeVue);
   appInitialize(config);
 }
 

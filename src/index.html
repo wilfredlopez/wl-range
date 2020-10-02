@@ -85,7 +85,7 @@
 
   <body>
     <h1>Hello</h1>
-    <wl-range value="20" min="0" max="100" pin color="danger">
+    <wl-range min="0" max="100">
       <div slot="start">0</div>
       <div slot="end">100</div>
     </wl-range>
@@ -94,8 +94,20 @@
       const range = document.querySelector('wl-range');
 
       if (range) {
-        range.addEventListener('wl-change', e => {
+        // range.onWlChange = () => {
+        //   console.log('it changes');
+        // };
+        range.addEventListener('wlChange', e => {
           console.log('it changes', e.detail.value);
+        });
+        range.addEventListener('wlBlur', e => {
+          console.log('it blurs', e);
+        });
+        range.addEventListener('wlFocus', e => {
+          console.log('it focus', e);
+        });
+        range.addEventListener('wlInput', e => {
+          console.log('it input', e);
         });
       }
     </script>

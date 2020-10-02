@@ -133,7 +133,6 @@ export class MyComponent implements ComponentInterface {
     }
 
     value = this.ensureValueInBounds(value);
-
     this.wlChange.emit({ value });
   }
 

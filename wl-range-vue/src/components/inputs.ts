@@ -6,75 +6,94 @@ import * as vue from 'vue';
  *  name: the vue name of the component
  *  coreTag: the actual tag to render (such as wl-range)
  */
-export function createInputComponent(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value', ...rest: any[]) {
+export function createInputComponent(name: string, coreTag: string, modelEvent = 'wlChange', valueProperty = 'value') {
   return vue.defineComponent({
     name,
     model: {
       event: modelEvent,
       prop: valueProperty,
-      ...rest,
     },
-
-    emits: ['wlChange', 'wlInput', 'wlBlur', 'wlFocus'],
+    emits: ['wl-change', 'wl-input', 'wl-blur', 'wl-focus'],
     render() {
+      //   console.log("renring", createElement);
       // Vue types have a bug accessing member properties:
       // https://github.com/vuejs/vue/issues/8721
-      // const cmp = this;
-      const cmp: any = this;
+      //   const cmp = this;
+      //   const cmp: any = this;
+      const children = [];
+      if (this.$slots.default) {
+        children.push(this.$slots.default());
+      }
+      if (this.$slots.start) {
+        const startChildren = this.$slots.start();
+        startChildren[0].props = {
+          ...startChildren[0].props,
+          slot: 'start',
+        };
+        children.push(startChildren);
+      }
+      if (this.$slots.end) {
+        const endChildren = this.$slots.end();
+        endChildren[0].props = {
+          ...endChildren[0].props,
+          slot: 'end',
+        };
+        children.push(endChildren);
+      }
+
       const { h } = vue;
 
-      const slots: vue.VNodeArrayChildren = [];
-
-      if (cmp.$slots.default) {
-        slots.push(cmp.$slots.default());
-      }
-      if (cmp.$slots.start) {
-        slots.push(cmp.$slots.start());
-      }
-      if (cmp.$slots.end) {
-        slots.push(cmp.$slots.end());
-      }
-
       return h(
-        coreTag as any,
+        coreTag,
         {
-          attrs: cmp.attrs,
-          on: {
-            wlChange: cmp.handleChange.bind(cmp),
-            wlInput: cmp.handleInput.bind(cmp),
-            wlBlur: cmp.handleBlur.bind(cmp),
-            wlFocus: cmp.handleFocus.bind(cmp),
+          //   onClick: this.handleChange, // this works
+          //   onMouseDown: this.handleChange,
+          //   onChange: this.handleChange,
+          //   onWlChange: this.handleChange,
+          onVnodeMounted: node => {
+            const el = node.el;
+            if (el) {
+              // el.color = 'danger';
+              el.addEventListener('wlChange', this.handleChange);
+              el.addEventListener('wlBlur', this.handleBlur);
+              el.addEventListener('wlFocus', this.handleFocus);
+              el.addEventListener('wlInput', this.handleInput);
+            }
           },
         },
-        slots,
+
+        children,
       );
     },
     methods: {
-      handleChange($event: any) {
+      handleChange($event: vue.Events['onChange']) {
         if (modelEvent === 'wlChange') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit('wlChange', $event.target[valueProperty]);
+          // eslint-disable-next-line
+          // @ts-ignore
+          this.$emit('wl-change', $event.target[valueProperty]);
         } else {
-          this.$emit('wlChange', $event);
+          this.$emit('wl-change', $event);
         }
       },
-      handleInput($event: any) {
+      handleInput($event: vue.Events['onInput']) {
         if (modelEvent === 'wlInput') {
           // Vue expects the value to be sent as the argument for v-model, not the
           // actual event object
-          this.$emit('wlInput', $event.target[valueProperty]);
+          // eslint-disable-next-line
+          // @ts-ignore
+          this.$emit('wl-input', $event.target[valueProperty]);
         } else {
-          this.$emit('wlInput', $event);
+          this.$emit('wl-input', $event);
         }
       },
-      handleBlur($event: any) {
-        this.$emit('wlBlur', $event);
+      handleBlur($event: vue.Events['onBlur']) {
+        this.$emit('wl-blur', $event);
       },
-      handleFocus($event: any) {
-        this.$emit('wlFocus', $event);
+      handleFocus($event: vue.Events['onFocus']) {
+        this.$emit('wl-focus', $event);
       },
     },
-    ...rest,
   });
 }
