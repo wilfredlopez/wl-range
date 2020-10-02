@@ -45,6 +45,7 @@ app.render('#app');
 ## Related
 
 - [wl-range](https://www.npmjs.com/package/wl-range)
+- [wl-range-react](https://www.npmjs.com/package/wl-range-react)
 - [@wilfredlopez/wl-components](https://www.npmjs.com/package/@wilfredlopez/wl-components)
 
 ## License
